@@ -13,6 +13,7 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <div class="lightbox" id="lightbox">
     <span class="close" id="closeBtn">&times;</span>
     <img id="lightboxImage" src="" alt="Ampliado">
@@ -20,7 +21,6 @@
 
 <body>
     <nav class="navbar navbar-expand-lg">
-
         <div class="container-fluid">
 
             <a class="navbar-brand" href="index.html">
@@ -80,89 +80,79 @@
                     <li class="nav-item">
                         <a class="nav-link" href="remates.html">🔥 Remates</a>
                     </li>
-
                 </ul>
-
             </div>
-
         </div>
-
     </nav>
 
     <div id="bandCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
         <div class="carousel-inner">
-
             <div class="carousel-item active">
-                <div class="carousel-image bmth-slide">
+                <div class="carousel-image hanabie-slide">
                     <div class="overlay">
-                        <h1 class="carousel-text">Bring Me The Horizon</h1>
+                        <h1 class="carousel-text">Hanabie</h1>
                     </div>
                 </div>
             </div>
 
-
         </div>
+
     </div>
 
 
     <div class="container">
+
         <div class="container">
-            <div class="row">
-                <div class="col-6 col-md-6 col-lg-4 col-xl-4">
-                    <div class="card w-100 mt-2">
-                        <img src="BMTH/BMTH_01.png" class="card-img-top" alt="...">
-                    </div>
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-6 col-lg-4 col-xl-4">
+                <div class="card w-100 mt-2">
+                    <img src="HANABIE/HANABIE_01png.png" loading="lazy" decoding="async" class="card-img-top"
+                        alt="..." />
                 </div>
-
-                <div class="col-6 col-md-6 col-lg-4 col-xl-4">
-                    <div class="card w-100 mt-2">
-                        <img src="BMTH/BMTH_02.png" class="card-img-top" alt="...">
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-6 col-lg-4 col-xl-4">
-                    <div class="card w-100 mt-2">
-                        <img src="BMTH/BMTH_03.png" class="card-img-top" alt="...">
-                    </div>
-                </div>
-
             </div>
         </div>
+    </div>
 
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
 
-    const swiper = new Swiper(".productSwiper", {
+    document.querySelectorAll(".product-section").forEach(section => {
 
-        slidesPerView: 2,
-        spaceBetween: 5,
+        new Swiper(
+            section.querySelector(".productSwiper"),
+            {
+                slidesPerView: 2,
+                spaceBetween: 5,
 
-        navigation: {
-            nextEl: ".btn-next",
-            prevEl: ".btn-prev",
-        },
+                navigation: {
+                    nextEl: section.querySelector(".btn-next"),
+                    prevEl: section.querySelector(".btn-prev"),
+                },
 
-        breakpoints: {
+                breakpoints: {
 
-            576: {
-                slidesPerView: 2
-            },
+                    576: {
+                        slidesPerView: 2
+                    },
 
-            768: {
-                slidesPerView: 3
-            },
+                    768: {
+                        slidesPerView: 3
+                    },
 
-            992: {
-                slidesPerView: 4
-            },
+                    992: {
+                        slidesPerView: 4
+                    },
 
-            1200: {
-                slidesPerView: 5
+                    1200: {
+                        slidesPerView: 5
+                    }
+
+                }
             }
-
-        }
+        );
 
     });
 
@@ -170,12 +160,20 @@
     const lightboxImage = document.getElementById("lightboxImage");
     const closeBtn = document.getElementById("closeBtn");
 
-    document.querySelectorAll(".card-img-top").forEach(img => {
+    document.querySelectorAll(".product-card img").forEach(img => {
         img.addEventListener("click", () => {
             lightboxImage.src = img.src;
             lightbox.classList.add("show");
         });
     });
+
+    document.querySelectorAll(".card img").forEach(img => {
+        img.addEventListener("click", () => {
+            lightboxImage.src = img.src;
+            lightbox.classList.add("show");
+        });
+    });
+
 
     closeBtn.addEventListener("click", closeLightbox);
     lightbox.addEventListener("click", (e) => {
@@ -199,6 +197,7 @@
         }
     });
     observer.observe(lightbox, { attributes: true });
+
 </script>
 
 
